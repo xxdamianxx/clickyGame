@@ -20,8 +20,6 @@ class App extends Component {
   //   this.setState({ friends });
   // };
 
-
-
   handleClick = this_id => {
     console.log(" ");
     console.log(" ");
@@ -35,13 +33,13 @@ class App extends Component {
     const clicked = image.clicked;
     console.log("This image has a clicked value of: " + clicked);
     this.setState({ images });
-    if(!clicked){
+    if (!clicked) {
       console.log("You got it");
       // Mark image as clicked
       image.clicked = true;
       // Insert back into array
       // Get index of image
-      var index = images.findIndex(function(item, i){
+      var index = images.findIndex(function (item, i) {
         return item.id === this_id
       });
       console.log("index of image is: " + index);
@@ -52,14 +50,14 @@ class App extends Component {
     } else {
       // Reset clicked field on all images to false
       console.log("Sorry, you already clicked on this image")
-   
+
       console.log(" ");
       console.log("Resetting images");
       let images_new = [];
       let images = this.state.images;
       console.log("images is: " + images);
-      
-      for(var i = 0; i < images.length; i++){
+
+      for (var i = 0; i < images.length; i++) {
         console.log("img is: " + images[i])
         images[i].clicked = false;
         images_new.push(images[i]);
@@ -68,17 +66,12 @@ class App extends Component {
       for (let i = images_new.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [images_new[i], images_new[j]] = [images_new[j], images_new[i]];
-      }   
+      }
       console.log("images now: " + images_new);
-      this.setState({ images: images_new, score: 0});  
-      console.log("images after setState: " + images_new);    
-      
-
+      this.setState({ images: images_new, score: 0 });
+      console.log("images after setState: " + images_new);
     }
-      
   }
-
-  
 
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
@@ -101,4 +94,3 @@ class App extends Component {
 }
 
 export default App;
-
